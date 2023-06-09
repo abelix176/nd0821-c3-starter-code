@@ -1,6 +1,6 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
-from data import process_data
+from ml.data import process_data
 import logging
 
 
@@ -89,7 +89,7 @@ def evaluate_model_slices(model, df, categorical_features, encoder, lb, log_path
             df_sliced = df[df[feature] == value]
 
             X_test, y_test, _, _ = process_data(
-                df_sliced, categorical_features=categorical_features, label="salary", training=False
+                df_sliced, categorical_features=categorical_features, label="salary", training=False,
                 encoder=encoder, lb=lb
             )
             predicitons = inference(model, X_test)

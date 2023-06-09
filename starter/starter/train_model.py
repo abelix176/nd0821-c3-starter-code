@@ -47,5 +47,5 @@ print('precision: ', precision)
 print('recall: ', recall)
 print('fbeta: ', fbeta)
 
-logfile_path = "model_slice_performance_log.txt"
+logfile_path = "model_slice_performance.log"
 evaluate_model_slices(trained_model, data, cat_features, encoder, lb, logfile_path)
