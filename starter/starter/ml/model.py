@@ -1,5 +1,7 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
+from data import process_data
+import logging
 
 
 # Optional: implement hyperparameter tuning.
@@ -60,3 +62,43 @@ def inference(model, X):
         Predictions from the model.
     """
     return model.predict(X)
+
+def evaluate_model_slices(model, df, categorical_features, encoder, lb, log_path):
+    """
+    Perform model evaluation on data slices of the categorical features.
+    
+    Inputs
+    ------
+    model: trainded model to be evaluated
+    df: pandas datafram of data to be used
+    categorical_features: categorical features of the input data
+    encoder: encoder used to train the model
+    lb: binarizer
+    log_path: path to wirte output to
+
+    Outputs
+    ------
+    None
+    """
+    logging.basicConfig(filename = log_path,
+                    level=logging.INFO, format="%(asctime)-15s %(message)s")
+    logger = logging.getLogger()
+
+    for feature in categorical_features:
+        for value in df[feature].unique():
+            df_sliced = df[df[feature] == value]
+
+            X_test, y_test, _, _ = process_data(
+                df_sliced, categorical_features=categorical_features, label="salary", training=False
+                encoder=encoder, lb=lb
+            )
+            predicitons = inference(model, X_test)
+            precision, recall, fbeta = compute_model_metrics(y_test, predicitons)
+
+            logger.info(f"Slice: {feature}={value}")
+            logger.info(f"Precision: {precision}")
+            logger.info(f"Recall: {recall}")
+            logger.info(f"fbeta: {fbeta}")
+            logger.info(f"-----------------------")
+
+

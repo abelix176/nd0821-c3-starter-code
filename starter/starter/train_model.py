@@ -3,7 +3,7 @@
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from ml.data import process_data
-from ml.model import train_model, compute_model_metrics, inference
+from ml.model import train_model, compute_model_metrics, inference, evaluate_model_slices
 import pickle
 
 # Add code to load in the data.
@@ -46,3 +46,6 @@ precision, recall, fbeta = compute_model_metrics(y_test, predicitons)
 print('precision: ', precision)
 print('recall: ', recall)
 print('fbeta: ', fbeta)
+
+logfile_path = "model_slice_performance_log.txt"
+evaluate_model_slices(trained_model, data, cat_features, encoder, lb, logfile_path)
