@@ -1,8 +1,7 @@
-import pytest
 import pandas as pd
 import logging
-from ml.data import process_data
-from ml.model import train_model, inference, compute_model_metrics, evaluate_model_slices
+from starter.starter.ml.data import process_data
+from starter.starter.ml.model import train_model, inference, compute_model_metrics, evaluate_model_slices
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np

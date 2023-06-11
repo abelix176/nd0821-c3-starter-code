@@ -5,8 +5,8 @@ import pickle
 
 from sklearn.preprocessing import LabelBinarizer
 
-from starter.ml.data import process_data
-from starter.ml.model import inference
+from starter.starter.ml.data import process_data
+from starter.starter.ml.model import inference
 
 app = FastAPI()
 

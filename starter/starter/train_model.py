@@ -2,8 +2,8 @@
 
 from sklearn.model_selection import train_test_split
 import pandas as pd
-from ml.data import process_data
-from ml.model import train_model, compute_model_metrics, inference, evaluate_model_slices
+from starter.starter.ml.data import process_data
+from starter.starter.ml.model import train_model, compute_model_metrics, inference, evaluate_model_slices
 import pickle
 
 # Add code to load in the data.
