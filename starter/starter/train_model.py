@@ -34,11 +34,11 @@ X_test, y_test, encoder_test, lb_test = process_data(
 # Train and save a model.
 trained_model = train_model(X_train, y_train)
 
-with open('../data/trained_model.pkl', 'wb') as f:
+with open('../model/trained_model.pkl', 'wb') as f:
     pickle.dump(train_model, f)
-with open('../data/encoder.pkl', 'wb') as f:
+with open('../model/encoder.pkl', 'wb') as f:
     pickle.dump(encoder, f)
-with open('../data/lb.pkl', 'wb') as f:
+with open('../model/lb.pkl', 'wb') as f:
     pickle.dump(lb, f)
 
 predicitons = inference(trained_model, X_test)
