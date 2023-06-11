@@ -61,7 +61,8 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    return model.predict(X)
+    preds = model.predict(X)
+    return preds
 
 def evaluate_model_slices(model, df, categorical_features, encoder, lb, log_path):
     """

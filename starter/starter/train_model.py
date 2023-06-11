@@ -35,7 +35,7 @@ X_test, y_test, encoder_test, lb_test = process_data(
 trained_model = train_model(X_train, y_train)
 
 with open('../model/trained_model.pkl', 'wb') as f:
-    pickle.dump(train_model, f)
+    pickle.dump(trained_model, f)
 with open('../model/encoder.pkl', 'wb') as f:
     pickle.dump(encoder, f)
 with open('../model/lb.pkl', 'wb') as f:
